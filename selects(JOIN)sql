@@ -1,0 +1,43 @@
+
+-- usuario + endereco
+SELECT u.usuario_id, u.nome, u.email, e.cep, e.estado, e.cidade, e.rua, e.numero
+FROM tb_usuario u
+INNER JOIN tb_endereco e ON u.usuario_id = e.usuario_id;
+
+-- Caminhao + coleta
+SELECT c.coleta_id, c.qtd_de_coleta, c.data_coleta, ca.placa, ca.qtd_de_coletas
+FROM tb_coleta c
+INNER JOIN tb_caminhao ca ON c.caminhao_id = ca.caminhao_id;
+
+-- Selecionando usuário e suas notificações
+SELECT u.usuario_id, u.nome, n.mensagem
+FROM tb_usuario u
+INNER JOIN tb_usuario_notificacao un ON u.usuario_id = un.usuario_id
+INNER JOIN tb_notificacao n ON un.notificacao_id = n.notificacao_id;
+
+-- Verificando as coletas de um usuário
+SELECT u.usuario_id, u.nome, c.coleta_id, c.data_coleta
+FROM tb_usuario u
+INNER JOIN tb_usuario_coleta uc ON u.usuario_id = uc.usuario_id
+INNER JOIN tb_coleta c ON uc.coleta_id = c.coleta_id
+WHERE u.usuario_id = 1;  -- Aqui você pode alterar o id para outro usuário
+
+-- Verificando a localização de um caminhão em uma coleta 
+SELECT ca.placa, l.longitude, l.latitude, l.data_hora
+FROM tb_caminhao ca
+INNER JOIN tb_localizacao l ON ca.localizacao_id = l.localizacao_id;
+
+-- Exibir coletas e seus respectivos endereços com o nome do solicitante
+SELECT c.coleta_id, c.data_coleta, e.cep, e.estado, e.cidade, e.rua, e.numero, u.nome AS nome_usuario
+FROM tb_coleta c
+INNER JOIN tb_endereco e ON c.endereco_id = e.endereco_id
+INNER JOIN tb_usuario_coleta uc ON c.coleta_id = uc.coleta_id
+INNER JOIN tb_usuario u ON uc.usuario_id = u.usuario_id;
+
+-- Selecionando a usuario/ notificacao/ data 
+SELECT u.nome, n.mensagem, un.data_notificacao
+FROM tb_usuario_notificacao un
+INNER JOIN tb_usuario u ON un.usuario_id = u.usuario_id
+INNER JOIN tb_notificacao n ON un.notificacao_id = n.notificacao_id;
+
+

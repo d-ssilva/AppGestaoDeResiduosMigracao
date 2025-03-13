@@ -1,0 +1,110 @@
+-- Inserções na tabela tb_usuario
+INSERT INTO tb_usuario (nome, email, agendou_coleta, foi_notificado, endereco_id) VALUES ('João Silva', 'joao@gmail.com', 1, 1, NULL);
+INSERT INTO tb_usuario (nome, email, agendou_coleta, foi_notificado, endereco_id) VALUES ('Maria Santos', 'maria@gmail.com', 0, 1, NULL);
+INSERT INTO tb_usuario (nome, email, agendou_coleta, foi_notificado, endereco_id) VALUES ('Carlos Pereira', 'carlos@gmail.com', 1, 0, NULL);
+INSERT INTO tb_usuario (nome, email, agendou_coleta, foi_notificado, endereco_id) VALUES ('Ana Lima', 'ana@gmail.com', 1, 1, NULL);
+INSERT INTO tb_usuario (nome, email, agendou_coleta, foi_notificado, endereco_id) VALUES ('Pedro Oliveira', 'pedro@gmail.com', 0, 1, NULL);
+INSERT INTO tb_usuario (nome, email, agendou_coleta, foi_notificado, endereco_id) VALUES ('Fernanda Costa', 'fernanda@gmail.com', 1, 0, NULL);
+INSERT INTO tb_usuario (nome, email, agendou_coleta, foi_notificado, endereco_id) VALUES ('Juliana Alves', 'juliana@gmail.com', 1, 1, NULL);
+INSERT INTO tb_usuario (nome, email, agendou_coleta, foi_notificado, endereco_id) VALUES ('Lucas Rocha', 'lucas@gmail.com', 0, 1,  NULL);
+INSERT INTO tb_usuario (nome, email, agendou_coleta, foi_notificado, endereco_id) VALUES ('Beatriz Ramos', 'beatriz@gmail.com', 1, 0, NULL);
+INSERT INTO tb_usuario (nome, email, agendou_coleta, foi_notificado, endereco_id) VALUES ('Gustavo Nunes', 'gustavo@gmail.com', 1, 1, NULL);
+
+-- Inserções na tabela tb_endereco
+INSERT INTO tb_endereco (cep, estado, cidade, rua, numero, usuario_id) VALUES (06236000, 'SP', 'São Paulo', 'Av. Paulista', 1000, 1);
+INSERT INTO tb_endereco (cep, estado, cidade, rua, numero, usuario_id) VALUES (98765432, 'RJ', 'Rio de Janeiro', 'Rua das Laranjeiras', 25, 2);
+INSERT INTO tb_endereco (cep, estado, cidade, rua, numero, usuario_id) VALUES (65432198, 'MG', 'Belo Horizonte', 'Av. Afonso Pena', 120, 3);
+INSERT INTO tb_endereco (cep, estado, cidade, rua, numero, usuario_id) VALUES (11122233, 'BA', 'Salvador', 'Rua do Farol', 50, 4);
+INSERT INTO tb_endereco (cep, estado, cidade, rua, numero, usuario_id) VALUES (44455566, 'PR', 'Curitiba', 'Av. Sete de Setembro', 300, 5);
+INSERT INTO tb_endereco (cep, estado, cidade, rua, numero, usuario_id) VALUES (55566677, 'RS', 'Porto Alegre', 'Rua da Praia', 45, 6);
+INSERT INTO tb_endereco (cep, estado, cidade, rua, numero, usuario_id) VALUES (66677788, 'PE', 'Recife', 'Av. Boa Viagem', 200, 7);
+INSERT INTO tb_endereco (cep, estado, cidade, rua, numero, usuario_id) VALUES (77788899, 'CE', 'Fortaleza', 'Rua Dragão do Mar', 75, 8);
+INSERT INTO tb_endereco (cep, estado, cidade, rua, numero, usuario_id) VALUES (88899900, 'SC', 'Florianópolis', 'Av. Beira Mar', 90, 9);
+INSERT INTO tb_endereco (cep, estado, cidade, rua, numero, usuario_id) VALUES (99900011, 'AM', 'Manaus', 'Rua Amazonas', 60, 10);
+
+-- Adicionando o endereço na tabela de usuários
+-- Declarar a variável
+UPDATE tb_usuario SET endereco_id = 1 WHERE usuario_id = 1;
+UPDATE tb_usuario SET endereco_id = 2 WHERE usuario_id = 2;
+UPDATE tb_usuario SET endereco_id = 3 WHERE usuario_id = 3;
+UPDATE tb_usuario SET endereco_id = 4 WHERE usuario_id = 4;
+UPDATE tb_usuario SET endereco_id = 5 WHERE usuario_id = 5;
+UPDATE tb_usuario SET endereco_id = 6 WHERE usuario_id = 6;
+UPDATE tb_usuario SET endereco_id = 7 WHERE usuario_id = 7;
+UPDATE tb_usuario SET endereco_id = 8 WHERE usuario_id = 8;
+UPDATE tb_usuario SET endereco_id = 9 WHERE usuario_id = 9;
+UPDATE tb_usuario SET endereco_id = 10 WHERE usuario_id = 10;
+
+
+-- Inserções na tabela tb_localizacao
+-- Inserções com números aleatórios para longitude e latitude
+INSERT INTO tb_localizacao (longitude, latitude, data_hora) VALUES (DBMS_RANDOM.VALUE(-180, 180), DBMS_RANDOM.VALUE(-90, 90), TO_DATE('2024-01-01 10:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO tb_localizacao (longitude, latitude, data_hora) VALUES (DBMS_RANDOM.VALUE(-180, 180), DBMS_RANDOM.VALUE(-90, 90), TO_DATE('2024-01-02 11:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO tb_localizacao (longitude, latitude, data_hora) VALUES (DBMS_RANDOM.VALUE(-180, 180), DBMS_RANDOM.VALUE(-90, 90), TO_DATE('2024-01-03 12:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO tb_localizacao (longitude, latitude, data_hora) VALUES (DBMS_RANDOM.VALUE(-180, 180), DBMS_RANDOM.VALUE(-90, 90), TO_DATE('2024-01-04 13:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO tb_localizacao (longitude, latitude, data_hora) VALUES (DBMS_RANDOM.VALUE(-180, 180), DBMS_RANDOM.VALUE(-90, 90), TO_DATE('2024-01-05 14:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO tb_localizacao (longitude, latitude, data_hora) VALUES (DBMS_RANDOM.VALUE(-180, 180), DBMS_RANDOM.VALUE(-90, 90), TO_DATE('2024-01-06 15:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO tb_localizacao (longitude, latitude, data_hora) VALUES (DBMS_RANDOM.VALUE(-180, 180), DBMS_RANDOM.VALUE(-90, 90), TO_DATE('2024-01-07 16:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO tb_localizacao (longitude, latitude, data_hora) VALUES (DBMS_RANDOM.VALUE(-180, 180), DBMS_RANDOM.VALUE(-90, 90), TO_DATE('2024-01-08 17:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO tb_localizacao (longitude, latitude, data_hora) VALUES (DBMS_RANDOM.VALUE(-180, 180), DBMS_RANDOM.VALUE(-90, 90), TO_DATE('2024-01-09 18:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+INSERT INTO tb_localizacao (longitude, latitude, data_hora) VALUES (DBMS_RANDOM.VALUE(-180, 180), DBMS_RANDOM.VALUE(-90, 90), TO_DATE('2024-01-10 19:00:00', 'YYYY-MM-DD HH24:MI:SS'));
+
+-- Inserções na tabela tb_notificacao
+INSERT INTO tb_notificacao (mensagem) VALUES ('Coleta agendada com sucesso!');
+INSERT INTO tb_notificacao (mensagem) VALUES ('Coleta realizada com sucesso.');
+INSERT INTO tb_notificacao (mensagem) VALUES ('Problema na coleta. Entre em contato.');
+
+-- Inserções na tabela tb_caminhao
+INSERT INTO tb_caminhao (placa, qtd_de_coletas, qtd_de_coletas_max, localizacao_id) VALUES ('ABC1234', 5, 20, 1);
+INSERT INTO tb_caminhao (placa, qtd_de_coletas, qtd_de_coletas_max, localizacao_id) VALUES ('XYZ5678', 3, 15, 2);
+INSERT INTO tb_caminhao (placa, qtd_de_coletas, qtd_de_coletas_max, localizacao_id) VALUES ('DEF9101', 8, 25, 3);
+INSERT INTO tb_caminhao (placa, qtd_de_coletas, qtd_de_coletas_max, localizacao_id) VALUES ('GHI2345', 2, 10, 4);
+INSERT INTO tb_caminhao (placa, qtd_de_coletas, qtd_de_coletas_max, localizacao_id) VALUES ('JKL6789', 4, 18, 5);
+INSERT INTO tb_caminhao (placa, qtd_de_coletas, qtd_de_coletas_max, localizacao_id) VALUES ('MNO1234', 7, 22, 6);
+INSERT INTO tb_caminhao (placa, qtd_de_coletas, qtd_de_coletas_max, localizacao_id) VALUES ('PQR5678', 6, 20, 7);
+INSERT INTO tb_caminhao (placa, qtd_de_coletas, qtd_de_coletas_max, localizacao_id) VALUES ('STU9101', 9, 30, 8);
+INSERT INTO tb_caminhao (placa, qtd_de_coletas, qtd_de_coletas_max, localizacao_id) VALUES ('VWX2345', 3, 15, 9);
+INSERT INTO tb_caminhao (placa, qtd_de_coletas, qtd_de_coletas_max, localizacao_id) VALUES ('YZA6789', 5, 20, 10);
+
+-- Inserções na tabela tb_coleta
+INSERT INTO tb_coleta (qtd_de_coleta, data_coleta, endereco_id, caminhao_id) VALUES (10, TO_DATE('2024-01-01', 'YYYY-MM-DD'), 1, 1);
+INSERT INTO tb_coleta (qtd_de_coleta, data_coleta, endereco_id, caminhao_id) VALUES (12, TO_DATE('2024-01-02', 'YYYY-MM-DD'), 2, 2);
+INSERT INTO tb_coleta (qtd_de_coleta, data_coleta, endereco_id, caminhao_id) VALUES (8, TO_DATE('2024-01-03', 'YYYY-MM-DD'), 3, 3);
+INSERT INTO tb_coleta (qtd_de_coleta, data_coleta, endereco_id, caminhao_id) VALUES (15, TO_DATE('2024-01-04', 'YYYY-MM-DD'), 4, 4);
+INSERT INTO tb_coleta (qtd_de_coleta, data_coleta, endereco_id, caminhao_id) VALUES (20, TO_DATE('2024-01-05', 'YYYY-MM-DD'), 5, 5);
+INSERT INTO tb_coleta (qtd_de_coleta, data_coleta, endereco_id, caminhao_id) VALUES (7, TO_DATE('2024-01-06', 'YYYY-MM-DD'), 6, 6);
+INSERT INTO tb_coleta (qtd_de_coleta, data_coleta, endereco_id, caminhao_id) VALUES (18, TO_DATE('2024-01-07', 'YYYY-MM-DD'), 7, 7);
+INSERT INTO tb_coleta (qtd_de_coleta, data_coleta, endereco_id, caminhao_id) VALUES (9, TO_DATE('2024-01-08', 'YYYY-MM-DD'), 8, 8);
+INSERT INTO tb_coleta (qtd_de_coleta, data_coleta, endereco_id, caminhao_id) VALUES (14, TO_DATE('2024-01-09', 'YYYY-MM-DD'), 9, 9);
+INSERT INTO tb_coleta (qtd_de_coleta, data_coleta, endereco_id, caminhao_id) VALUES (11, TO_DATE('2024-01-10', 'YYYY-MM-DD'), 10, 10);
+
+-- Inserções na tabela tb_usuario_notificacao -- '2024-01-01', 'YYYY-MM-DD'), 
+INSERT INTO tb_usuario_notificacao (notificacao_id, usuario_id, data_notificacao) VALUES (1, 1, SYSDATE); -- Aqui, o SYSDATE retorna a data e hora atual do sistema. 
+INSERT INTO tb_usuario_notificacao (notificacao_id, usuario_id, data_notificacao) VALUES (1, 2, SYSDATE);
+INSERT INTO tb_usuario_notificacao (notificacao_id, usuario_id, data_notificacao) VALUES (1, 2, SYSDATE);
+INSERT INTO tb_usuario_notificacao (notificacao_id, usuario_id, data_notificacao) VALUES (2, 1, SYSDATE);
+INSERT INTO tb_usuario_notificacao (notificacao_id, usuario_id, data_notificacao) VALUES (2, 2, SYSDATE);
+INSERT INTO tb_usuario_notificacao (notificacao_id, usuario_id, data_notificacao) VALUES (1, 2, SYSDATE);
+INSERT INTO tb_usuario_notificacao (notificacao_id, usuario_id, data_notificacao) VALUES (2, 1, SYSDATE);
+INSERT INTO tb_usuario_notificacao (notificacao_id, usuario_id, data_notificacao) VALUES (2, 1, SYSDATE);
+INSERT INTO tb_usuario_notificacao (notificacao_id, usuario_id, data_notificacao) VALUES (2, 1, SYSDATE);
+INSERT INTO tb_usuario_notificacao (notificacao_id, usuario_id, data_notificacao) VALUES (2, 2, SYSDATE);
+
+
+-- Inserções na tabela tb_usuario_coleta
+INSERT INTO tb_usuario_coleta (usuario_id, coleta_id) VALUES (1, 1);
+INSERT INTO tb_usuario_coleta (usuario_id, coleta_id) VALUES (2, 2);
+INSERT INTO tb_usuario_coleta (usuario_id, coleta_id) VALUES (3, 3);
+INSERT INTO tb_usuario_coleta (usuario_id, coleta_id) VALUES (4, 4);
+INSERT INTO tb_usuario_coleta (usuario_id, coleta_id) VALUES (5, 5);
+INSERT INTO tb_usuario_coleta (usuario_id, coleta_id) VALUES (6, 6);
+INSERT INTO tb_usuario_coleta (usuario_id, coleta_id) VALUES (7, 7);
+INSERT INTO tb_usuario_coleta (usuario_id, coleta_id) VALUES (8, 8);
+INSERT INTO tb_usuario_coleta (usuario_id, coleta_id) VALUES (9, 9);
+INSERT INTO tb_usuario_coleta (usuario_id, coleta_id) VALUES (10, 10);
+
+-- Área de testes
+
+INSERT INTO tb_usuario (usuario_id, nome, email, agendou_coleta, foi_notificado, endereco_id) VALUES (1, 'João da Silva', 'joao.silva@example.com', 0, 0, NULL);
+
+INSERT INTO tb_endereco (cep, estado, cidade, rua, numero, usuario_id) VALUES (06236000, 'SP', 'São Paulo', 'Av. Paulista', 1000, 1);
