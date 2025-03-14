@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using MongoDB.Driver;
+using AppGestaoDeResiduos.Data.Repositories; // Adicione este namespace para os repositórios
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,6 +29,20 @@ builder.Services.AddSingleton<MongoDBContext>(sp =>
 // #         Fim da Configuração do MongoDB         #
 // ##################################################
 
+// ##################################################
+// #           Registro dos Repositórios            #
+// ##################################################
+
+// Registra os repositórios como serviços com escopo (scoped)
+builder.Services.AddScoped<UsuarioRepository>();
+builder.Services.AddScoped<ColetaRepository>();
+builder.Services.AddScoped<CaminhaoRepository>();
+builder.Services.AddScoped<NotificacaoRepository>();
+
+// ##################################################
+// #         Fim do Registro dos Repositórios       #
+// ##################################################
+
 // Configuração do MVC (Model-View-Controller) para a API
 builder.Services.AddControllersWithViews();
 
@@ -43,16 +58,6 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 // # Fim da Configuração do Entity Framework Core   #
 // ##################################################
 
-// Registra o serviço de teste como um serviço com escopo (scoped)
-builder.Services.AddScoped<TestService>();
-
-// Configuração do serializador JSON para evitar loops de referência
-builder.Services.AddControllers()
-    .AddJsonOptions(options =>
-    {
-        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
-        options.JsonSerializerOptions.MaxDepth = 64; // Ajuste conforme necessário
-    });
 
 // ##################################################
 // #           Configuração da Autenticação JWT     #
@@ -111,10 +116,6 @@ app.MapControllerRoute(
 
 using (var scope = app.Services.CreateScope())
 {
-    // Obtém o serviço de teste e adiciona dados de teste ao banco de dados Oracle
-    var testService = scope.ServiceProvider.GetRequiredService<TestService>();
-    await testService.AddTestDataAsync();
-
     // Gera e exibe um token JWT de teste no console
     var tokenGenerator = new TokenGenerator(secretKey, issuer, audience);
     var testToken = tokenGenerator.GenerateTestToken();
@@ -126,36 +127,6 @@ using (var scope = app.Services.CreateScope())
 // ##################################################
 
 app.Run();
-
-// ##################################################
-// #   Classe de Serviço para Adicionar Dados de Teste
-// ##################################################
-
-public class TestService
-{
-    private readonly ApplicationDbContext _context;
-
-    public TestService(ApplicationDbContext context)
-    {
-        _context = context;
-    }
-
-    // Método para adicionar um usuário de teste ao banco de dados
-    public async Task AddTestDataAsync()
-    {
-        var testUser = new Usuario
-        {
-            Nome = "Danilo",
-            Email = "danilo@exemplo.com",
-            AgendouColeta = false,
-            FoiNotificado = false,
-            EnderecoId = 1
-        };
-
-        _context.Usuarios.Add(testUser);
-        await _context.SaveChangesAsync();
-    }
-}
 
 // ##################################################
 // #   Classe para Gerar Tokens JWT de Teste        #

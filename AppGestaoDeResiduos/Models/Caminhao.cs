@@ -1,32 +1,18 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using AppGestaoDeResiduos.Models;
 
-namespace AppGestaoDeResiduos.Models
+public class Caminhao
 {
-    [Table("tb_caminhao")]
-    public class Caminhao
-    {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column("caminhao_id")]
-        public int CaminhaoId { get; set; }
+    public string? Id { get; set; } // MongoDB usa ObjectId ou string como ID
+    public string? Placa { get; set; }
+    public int? QtdDeColetas { get; set; }
+    public int? QtdDeColetasMax { get; set; }
+    public Localizacao? LocalizacaoAtual { get; set; } // Subdocumento
+    public List<Coleta>? Coletas { get; set; } // Array de subdocumentos
+}
 
-        [MaxLength(7)]
-        [Column("placa")]
-        public string? Placa { get; set; }
-
-        [Column("qtd_de_coletas")]
-        public int? QtdDeColetas { get; set; }
-
-        [Column("qtd_de_coletas_max")]
-        public int? QtdDeColetasMax { get; set; }
-
-        [Column("localizacao_id")]
-        public int? LocalizacaoId { get; set; }
-        [ForeignKey("LocalizacaoId")]
-        public Localizacao? Localizacao { get; set; }
-
-        public ICollection<Coleta>? Coletas { get; set; }
-    }
+public class Localizacao
+{
+    public double Longitude { get; set; }
+    public double Latitude { get; set; }
+    public DateTime DataHora { get; set; }
 }

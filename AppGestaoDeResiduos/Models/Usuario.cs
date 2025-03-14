@@ -1,40 +1,33 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace AppGestaoDeResiduos.Models
+﻿namespace AppGestaoDeResiduos.Models
 {
-    [Table("tb_usuario")]
     public class Usuario
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        [Column("00")]
-        public int UsuarioId { get; set; }
+        public Usuario()
+        {
+            Coletas = new List<Coleta>();
+            Notificacoes = new List<Notificacao>();
+        }
 
-        
-        [MaxLength(20)]
-        [Column("nome")]
+        public string? Id { get; set; }
         public string? Nome { get; set; }
-
-        
-        [EmailAddress]
-        [Column("email")]
         public string? Email { get; set; }
-
-        
-        [Column("agendou_coleta")]
         public bool? AgendouColeta { get; set; }
-        
-        [Column("foi_notificado")]
         public bool? FoiNotificado { get; set; }
 
-        [Column("endereco_id")]
-        public int? EnderecoId { get; set; }
-        [ForeignKey("EnderecoId")]
-        public Endereco? Endereco { get; set; }
+        // Subdocumento de Endereco
+        public EnderecoUsuario Endereco { get; set; }
 
-        public ICollection<UsuarioNotificacao>? UsuarioNotificacoes { get; set; }
-        public ICollection<UsuarioColeta>? UsuarioColetas { get; set; }
+        public List<Coleta> Coletas { get; set; } // Array de subdocumentos
+        public List<Notificacao> Notificacoes { get; set; } // Array de subdocumentos
+    }
+
+    // Subdocumento para Endereco
+    public class EnderecoUsuario
+    {
+        public string? Cep { get; set; }
+        public string? Estado { get; set; }
+        public string? Cidade { get; set; }
+        public string? Rua { get; set; }
+        public int? Numero { get; set; }
     }
 }
