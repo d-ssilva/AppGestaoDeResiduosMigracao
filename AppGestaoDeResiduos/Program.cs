@@ -11,7 +11,10 @@ using MongoDB.Driver;
 
 var builder = WebApplication.CreateBuilder(args);
 
-//  Configuração do MongoDB
+// ##################################################
+// #               Configuração do MongoDB          #
+// ##################################################
+
 // Obtém a string de conexão do MongoDB do arquivo appsettings.json
 var mongoConnectionString = builder.Configuration.GetConnectionString("MongoConnection");
 // Define o nome do banco de dados do MongoDB
@@ -20,16 +23,25 @@ var mongoDatabaseName = "GestaoResiduos";
 // Registra o MongoDBContext como um serviço singleton
 builder.Services.AddSingleton<MongoDBContext>(sp =>
     new MongoDBContext(mongoConnectionString, mongoDatabaseName));
-//  Configuração do MongoDB
+
+// ##################################################
+// #         Fim da Configuração do MongoDB         #
+// ##################################################
 
 // Configuração do MVC (Model-View-Controller) para a API
 builder.Services.AddControllersWithViews();
 
-//  Configuração do Entity Framework Core para o Oracle
+// ##################################################
+// #   Configuração do Entity Framework Core (Oracle)#
+// ##################################################
+
 // Conecta o aplicativo ao banco de dados Oracle usando a string de conexão do appsettings.json
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseOracle(builder.Configuration.GetConnectionString("DefaultConnection")));
-//  Configuração do Entity Framework Core para o Oracle
+
+// ##################################################
+// # Fim da Configuração do Entity Framework Core   #
+// ##################################################
 
 // Registra o serviço de teste como um serviço com escopo (scoped)
 builder.Services.AddScoped<TestService>();
@@ -42,7 +54,10 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.MaxDepth = 64; // Ajuste conforme necessário
     });
 
-//  Configuração da autenticação JWT
+// ##################################################
+// #           Configuração da Autenticação JWT     #
+// ##################################################
+
 // Define a chave secreta, emissor e audiência para o token JWT
 var secretKey = "your_very_long_secret_key_32_chars_minimum"; // Deve ter pelo menos 32 caracteres
 var issuer = "useradmin";
@@ -63,7 +78,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey))
         };
     });
-// Configuração da autenticação JWT
+
+// ##################################################
+// #      Fim da Configuração da Autenticação JWT   #
+// ##################################################
 
 var app = builder.Build();
 
@@ -87,7 +105,10 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-//  Adiciona dados de teste e exibe um token JWT de teste antes de iniciar a aplicação
+// ##################################################
+// #   Adiciona Dados de Teste e Exibe Token JWT    #
+// ##################################################
+
 using (var scope = app.Services.CreateScope())
 {
     // Obtém o serviço de teste e adiciona dados de teste ao banco de dados Oracle
@@ -99,11 +120,17 @@ using (var scope = app.Services.CreateScope())
     var testToken = tokenGenerator.GenerateTestToken();
     Console.WriteLine("Test JWT Token: " + testToken);
 }
-//  Adiciona dados de teste e exibe token JWT
+
+// ##################################################
+// # Fim da Adição de Dados de Teste e Exibição JWT #
+// ##################################################
 
 app.Run();
 
-//  Classe de serviço para adicionar dados de teste ao banco de dados Oracle
+// ##################################################
+// #   Classe de Serviço para Adicionar Dados de Teste
+// ##################################################
+
 public class TestService
 {
     private readonly ApplicationDbContext _context;
@@ -114,7 +141,6 @@ public class TestService
     }
 
     // Método para adicionar um usuário de teste ao banco de dados
-
     public async Task AddTestDataAsync()
     {
         var testUser = new Usuario
@@ -131,7 +157,10 @@ public class TestService
     }
 }
 
-//  Classe para gerar tokens JWT de teste
+// ##################################################
+// #   Classe para Gerar Tokens JWT de Teste        #
+// ##################################################
+
 public class TokenGenerator
 {
     private readonly string _secretKey;
@@ -166,3 +195,7 @@ public class TokenGenerator
         return tokenHandler.WriteToken(token);
     }
 }
+
+// ##################################################
+// # Fim da Classe para Gerar Tokens JWT de Teste   #
+// ##################################################

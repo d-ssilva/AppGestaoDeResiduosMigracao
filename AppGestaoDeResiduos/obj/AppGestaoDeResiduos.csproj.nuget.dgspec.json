@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\danilo.silva\\Downloads\\AppGestaoDeResiduos-main\\AppGestaoDeResiduos\\AppGestaoDeResiduos.csproj": {}
+    "C:\\Users\\Danilo\\Desktop\\AppGestaoDeResiduosMigracao\\AppGestaoDeResiduos\\AppGestaoDeResiduos.csproj": {}
   },
   "projects": {
-    "C:\\Users\\danilo.silva\\Downloads\\AppGestaoDeResiduos-main\\AppGestaoDeResiduos\\AppGestaoDeResiduos.csproj": {
+    "C:\\Users\\Danilo\\Desktop\\AppGestaoDeResiduosMigracao\\AppGestaoDeResiduos\\AppGestaoDeResiduos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\danilo.silva\\Downloads\\AppGestaoDeResiduos-main\\AppGestaoDeResiduos\\AppGestaoDeResiduos.csproj",
+        "projectUniqueName": "C:\\Users\\Danilo\\Desktop\\AppGestaoDeResiduosMigracao\\AppGestaoDeResiduos\\AppGestaoDeResiduos.csproj",
         "projectName": "AppGestaoDeResiduos",
-        "projectPath": "C:\\Users\\danilo.silva\\Downloads\\AppGestaoDeResiduos-main\\AppGestaoDeResiduos\\AppGestaoDeResiduos.csproj",
-        "packagesPath": "C:\\Users\\danilo.silva\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\danilo.silva\\Downloads\\AppGestaoDeResiduos-main\\AppGestaoDeResiduos\\obj\\",
+        "projectPath": "C:\\Users\\Danilo\\Desktop\\AppGestaoDeResiduosMigracao\\AppGestaoDeResiduos\\AppGestaoDeResiduos.csproj",
+        "packagesPath": "C:\\Users\\Danilo\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Danilo\\Desktop\\AppGestaoDeResiduosMigracao\\AppGestaoDeResiduos\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\danilo.silva\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Danilo\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
